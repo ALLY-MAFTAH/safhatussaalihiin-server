@@ -24,7 +24,9 @@
                 </div>
             @endif
 
-            <div class="text-center"><h4><b>WELCOME</b> </h4>   </div>
+            <div class="text-center">
+                <h4><b>WELCOME</b> </h4>
+            </div>
 
             <div class="row">
                 <div class="col-md-9">
@@ -88,20 +90,19 @@
 
                                                         <div class="col-6 " style="padding: 2px;">
                                                             <div class="int-div">
-                                                                <img src=" http://127.0.0.1:8000/api/picture/file/{{ $picture->id }}"
+                                                                <img src=" {{ asset('storage/' . $picture->file) }}"
                                                                     alt="Picture" style="width: 100%;padding:5px">
                                                                 <div class="row" style="padding: 5px">
-                                                                    <div class="col-md-7">
-                                                                        <h5>Date: <span
-                                                                                style="color: rgb(16, 22, 105);font-weight:bolder">{{ $picture->date }}</span>
-                                                                            </h4>
+                                                                    <div class="col-md-6">
+                                                                        <h6> <span
+                                                                                style="color: rgb(16, 22, 105);font-weight:bolder">{{ $picture->title }}</span>
+                                                                        </h6>
                                                                     </div>
-                                                                    <div class="col-md-5" style="text-align-last: right">
-                                                                        <a href="{{ route('delete_picture', $picture->id) }}"
-                                                                            onclick="return confirm('This picture will be deleted')"
-                                                                            class="btn btn-outline-danger">
+                                                                    <div class="col-md-6" style="text-align-last: right">
+                                                                        <a href="{{ asset('storage/' . $picture->file) }}"
+                                                                            download class="btn btn-outline-primary">
                                                                             <i
-                                                                                class="fas fa-trash">{{ __('Delete') }}</i>
+                                                                                class="fas fa-download">{{ __(' Download') }}</i>
                                                                         </a>
                                                                     </div>
                                                                 </div>
@@ -119,27 +120,26 @@
                                                 <b>VIDEO</b>
                                             </div>
                                             <tbody>
-                                                <div class="row ext-div px-3">
+                                                <div class="row ext-div px-2">
 
                                                     @foreach ($videos as $index => $video)
 
                                                         <div class="col-12 " style="padding: 2px;">
                                                             <div class="int-div">
 
-                                                                <video
-                                                                    src=" http://127.0.0.1:8000/api/video/file/{{ $video->id }}"
+                                                                <video src="{{ asset('storage/' . $video->file) }}"
                                                                     controls style="width: 100%;padding:5px"></video>
                                                                 <div class="row" style="padding: 5px">
-                                                                    <div class="col-md-7">
-                                                                        <h5>Date: <span
-                                                                                style="color: rgb(16, 22, 105);font-weight:bolder">{{ $video->date }}</span>
-                                                                            </h4>
+                                                                    <div class="col-md-6">
+                                                                        <h6> <span
+                                                                                style="color: rgb(16, 22, 105);font-weight:bolder">{{ $video->title }}</span>
+                                                                        </h6>
                                                                     </div>
-                                                                    <div class="col-md-5" style="text-align-last: right">
-                                                                        <a href="{{ route('delete_video', $video->id) }}"
-                                                                            onclick="return confirm('This video will be deleted')"
-                                                                            class="btn btn-outline-danger">
-                                                                            <i class="fas fa-trash">Delete</i>
+                                                                    <div class="col-md-6" style="text-align-last: right">
+                                                                        <a href="{{ asset('storage/' . $video->file) }}"
+                                                                            download class="btn btn-outline-primary">
+                                                                            <i
+                                                                                class="fas fa-download">{{ __(' Download') }}</i>
                                                                         </a>
                                                                     </div>
                                                                 </div>
@@ -184,9 +184,10 @@
                                     <table class="table">
                                         @if (count($streams) == 0)
                                             <div class="row" style="font-size:18px; padding-top:50%;padding-bottom:50%; ">
-                                             <div class="col-1"></div>
-                                             <div class="col-10"><i class="fas fa-exclamation-triangle"></i>   No Radio Links Yet</div>
-                                             <div class="col-1"></div>
+                                                <div class="col-1"></div>
+                                                <div class="col-10"><i class="fas fa-exclamation-triangle"></i> No Radio
+                                                    Links Yet</div>
+                                                <div class="col-1"></div>
                                             </div>
                                         @else
                                             <div style="padding: 15px">
