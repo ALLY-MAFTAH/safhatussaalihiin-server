@@ -1,0 +1,263 @@
+/**Switches css start
+==========================  **/
+.switch input[type=checkbox] {
+    opacity: 0;
+    position: absolute;
+}
+
+.switch input[type=checkbox] + .cr {
+    position: relative;
+    display: inline-block;
+    transition: 0.4s ease;
+    height: 20px;
+    width: 35px;
+    border: 1px solid #e9eaec;
+    border-radius: 60px;
+    cursor: pointer;
+    z-index: 0;
+    top: 12px;
+}
+
+.switch input[type=checkbox] + .cr:after, .switch input[type=checkbox] + .cr:before {
+    content: "";
+    position: absolute;
+    display: block;
+    top: 0;
+    left: 0;
+}
+
+.switch input[type=checkbox] + .cr:before {
+    transition: 0.2s cubic-bezier(0.24, 0, 0.5, 1);
+    height: 20px;
+    width: 35px;
+    border-radius: 30px;
+}
+
+.switch input[type=checkbox] + .cr:after {
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1), 0 4px 0 0 rgba(0, 0, 0, 0.04), 0 4px 9px rgba(0, 0, 0, 0.13), 0 3px 3px rgba(0, 0, 0, 0.05);
+    transition: 0.35s cubic-bezier(0.54, 1.6, 0.5, 1);
+    background: #f7f7f7;
+    height: 19px;
+    width: 19px;
+    border-radius: 60px;
+}
+
+.switch input[type=checkbox]:checked + .cr:before {
+    background: #4680ff;
+    transition: width 0.2s cubic-bezier(0, 0, 0, 0.1);
+}
+
+.switch input[type=checkbox]:checked + .cr:after {
+    left: 16px;
+}
+
+.switch input[type=checkbox]:disabled + label {
+    opacity: 0.5;
+    -webkit-filter: grayscale(0.4);
+    filter: grayscale(0.4);
+    cursor: not-allowed;
+}
+
+
+
+.switch.switch-danger input[type=checkbox]:checked + .cr:before {
+    background: #ff5252;
+}
+
+.switch.switch-success input[type=checkbox]:checked + .cr:before {
+    background: #9ccc65;
+}
+
+.switch.switch-warning input[type=checkbox]:checked + .cr:before {
+    background: #ffba57;
+}
+
+.switch.switch-info input[type=checkbox]:checked + .cr:before {
+    background: #00bcd4;
+}
+
+.switch.switch-purple input[type=checkbox]:checked + .cr:before {
+    background: #536dfe;
+}
+
+
+.switch input[type=checkbox] + .cr {
+    position: relative;
+    display: inline-block;
+    transition: 0.4s ease;
+    height: 20px;
+    width: 35px;
+    border: 1px solid #e9eaec;
+    border-radius: 60px;
+    cursor: pointer;
+    z-index: 0;
+    top: 12px;
+}
+
+.switch input[type=checkbox] + .cr:after, .switch input[type=checkbox] + .cr:before {
+    content: "";
+    position: absolute;
+    display: block;
+    top: 0;
+    left: 0;
+}
+
+.switch input[type=checkbox] + .cr:before {
+    transition: 0.2s cubic-bezier(0.24, 0, 0.5, 1);
+    height: 20px;
+    width: 35px;
+    border-radius: 30px;
+}
+
+.switch input[type=checkbox] + .cr:after {
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1), 0 4px 0 0 rgba(0, 0, 0, 0.04), 0 4px 9px rgba(0, 0, 0, 0.13), 0 3px 3px rgba(0, 0, 0, 0.05);
+    transition: 0.35s cubic-bezier(0.54, 1.6, 0.5, 1);
+    background: #f7f7f7;
+    height: 19px;
+    width: 19px;
+    border-radius: 60px;
+}
+
+.switch input[type=checkbox]:checked + .cr:before {
+    background: #4680ff;
+    transition: width 0.2s cubic-bezier(0, 0, 0, 0.1);
+}
+
+.switch input[type=checkbox]:checked + .cr:after {
+    left: 16px;
+}
+
+.switch input[type=checkbox]:disabled + label {
+    opacity: 0.5;
+    -webkit-filter: grayscale(0.4);
+    filter: grayscale(0.4);
+    cursor: not-allowed;
+}
+
+
+
+.switch.switch-danger input[type=checkbox]:checked + .cr:before {
+    background: #ff5252;
+}
+
+.switch.switch-success input[type=checkbox]:checked + .cr:before {
+    background: #9ccc65;
+}
+
+.switch.switch-warning input[type=checkbox]:checked + .cr:before {
+    background: #ffba57;
+}
+
+.switch.switch-info input[type=checkbox]:checked + .cr:before {
+    background: #00bcd4;
+}
+
+.switch.switch-purple input[type=checkbox]:checked + .cr:before {
+    background: #536dfe;
+}
+
+/**====== Switches css end ======**/
+/**  =====================
+      Badges css start
+==========================  **/
+.badge {
+    font-size: 80%;
+    padding: 0.35em 0.6em;
+    font-weight: 600;
+}
+
+.badge-light-primary {
+    background: rgba(70, 128, 255, 0.2);
+    border-color: #cbdbff;
+    color: #4680ff;
+}
+
+a.badge-light-primary.active, a.badge-light-primary:active, a.badge-light-primary:focus, a.badge-light-primary:hover {
+    background: #4680ff;
+    border-color: #4680ff;
+    color: #dae6ff;
+}
+
+.badge-light-secondary {
+    background: rgba(108, 117, 125, 0.2);
+    border-color: #d6d8db;
+    color: #6c757d;
+}
+
+a.badge-light-secondary.active, a.badge-light-secondary:active, a.badge-light-secondary:focus, a.badge-light-secondary:hover {
+    background: #6c757d;
+    border-color: #6c757d;
+    color: #e2e3e5;
+}
+
+.badge-light-success {
+    background: rgba(156, 204, 101, 0.2);
+    border-color: #e3f1d4;
+    color: #9ccc65;
+}
+
+a.badge-light-success.active, a.badge-light-success:active, a.badge-light-success:focus, a.badge-light-success:hover {
+    background: #9ccc65;
+    border-color: #9ccc65;
+    color: #ebf5e0;
+}
+
+.badge-light-info {
+    background: rgba(0, 172, 193, 0.2);
+    border-color: #b8e8ee;
+    color: #00acc1;
+}
+
+a.badge-light-info.active, a.badge-light-info:active, a.badge-light-info:focus, a.badge-light-info:hover {
+    background: #00acc1;
+    border-color: #00acc1;
+    color: #cceef3;
+}
+
+.badge-light-warning {
+    background: rgba(255, 186, 87, 0.2);
+    border-color: #ffecd0;
+    color: #ffba57;
+}
+
+a.badge-light-warning.active, a.badge-light-warning:active, a.badge-light-warning:focus, a.badge-light-warning:hover {
+    background: #ffba57;
+    border-color: #ffba57;
+    color: #fff1dd;
+}
+
+.badge-light-danger {
+    background: rgba(255, 82, 82, 0.2);
+    border-color: #ffcfcf;
+    color: #ff5252;
+}
+
+a.badge-light-danger.active, a.badge-light-danger:active, a.badge-light-danger:focus, a.badge-light-danger:hover {
+    background: #ff5252;
+    border-color: #ff5252;
+    color: #ffdcdc;
+}
+
+.badge-light-light {
+    background: rgba(248, 249, 250, 0.2);
+    border-color: #fdfdfe;
+    color: #f8f9fa;
+}
+
+a.badge-light-light.active, a.badge-light-light:active, a.badge-light-light:focus, a.badge-light-light:hover {
+    background: #f8f9fa;
+    border-color: #f8f9fa;
+    color: #fefefe;
+}
+
+.badge-light-dark {
+    background: rgba(52, 58, 64, 0.2);
+    border-color: #c6c8ca;
+    color: #343a40;
+}
+
+a.badge-light-dark.active, a.badge-light-dark:active, a.badge-light-dark:focus, a.badge-light-dark:hover {
+    background: #343a40;
+    border-color: #343a40;
+    color: #d6d8d9;
+}
