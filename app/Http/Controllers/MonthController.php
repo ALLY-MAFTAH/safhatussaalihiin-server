@@ -30,7 +30,7 @@ class MonthController extends Controller
         if (!$year) return back()->with('message', 'Year not found');
 
         $validator = Validator::make($request->all(), [
-            'name' => 'required',
+            'name' => 'required | unique:months',
         ]);
 
         if ($validator->fails()) {

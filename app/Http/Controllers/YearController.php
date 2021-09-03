@@ -12,7 +12,7 @@ class YearController extends Controller
     public function getAllYears()
     {
         $years = Year::latest()->get();
-        foreach($years as $year){
+        foreach ($years as $year) {
             $year->months;
         }
 
@@ -25,7 +25,7 @@ class YearController extends Controller
     {
 
         $validator = Validator::make($request->all(), [
-            'name' => 'required',
+            'name' => 'required | unique:years',
         ]);
 
         if ($validator->fails()) {

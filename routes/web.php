@@ -7,6 +7,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\VideoController;
 use App\Http\Controllers\StreamController;
 use App\Http\Controllers\MonthController;
+use App\Http\Controllers\RadioNameController;
 use App\Http\Controllers\YearController;
 
 /*
@@ -48,6 +49,11 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('delete_stream/{streamId}', [StreamController::class,'deleteLiveStream'])->name('delete_stream');
     Route::put('toggle_status/{stream}/status', [StreamController::class, 'toggleStatus'])->name('toggle_status');
 
+    // RADIO NAMES ROUTES
+    Route::get('radio_names', [RadioNameController::class,'getRadioName'])->name('radio_names');
+    Route::post('add_radio_name', [RadioNameController::class,'postRadioName'])->name('add_radio_name');
+    Route::put('edit_radio_name/{radioNameId}', [RadioNameController::class,'putRadioName'])->name('edit_radio_name');
+    Route::get('delete_radio_name/{radioNameId}', [RadioNameController::class,'deleteRadioName'])->name('delete_radio_name');
 
 
     // PICTURES  ROUTES

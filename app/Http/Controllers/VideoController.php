@@ -54,7 +54,7 @@ class VideoController extends Controller
         $validator = Validator::make($request->all(), [
             'file' => 'required',
             'date' => 'required',
-            'title' => 'required',
+            'title' => 'required | unique:videos',
 
         ]);
 

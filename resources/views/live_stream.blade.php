@@ -18,11 +18,43 @@
             <section id="actions" class="py-4 mb-2">
                 <div class="container">
                     <div class="row">
-                        <div class="col-md-3">
+                        <div class="col-md-6">
                             <a href="#" class="btn btn-primary btn-outline" data-toggle="modal"
                                 data-target="#addStreamModal">
-                                <i class="fas fa-plus"></i> Add Radio
+                                <i class="fas fa-plus"></i> Create Radio
                             </a>
+
+                        </div>
+                        <div class="col-md-6 text-right">
+                            <div class="dropdown">
+                                <a class="dropdown-toggle btn btn-primary btn-outline" data-toggle="dropdown" href="#">Radio
+                                    Names </a>
+                                <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel"
+                                    style="padding-left: 10px;padding-right: 40px;">
+                                    @foreach ($radioNames as $radioName)
+                                        <li>
+                                            <div class="row">
+                                                <div class="col-6">{{ $radioName->name }}</div>
+                                                <div class="col-3">
+                                                     <span style="padding-left: 50px;"><a
+                                                        href="{{ route('delete_radio_name', $radioName->id) }}"
+                                                        onclick="return confirm('This Radio Name Will Be Deleted')" class="">
+                                                        <i style="color: red" class="fas fa-trash"></i>
+                                                    </a></span>
+                                                </div>
+                                            </div>
+                                            <hr>
+                                        </li>
+
+                                    @endforeach
+                                    <div class="text-center">
+                                        <a href="#" class="btn btn-primary btn-outline" data-toggle="modal"
+                                            data-target="#addRadioNames">
+                                            <i class="fas fa-plus"></i> Add
+                                        </a>
+                                    </div>
+                                </ul>
+                            </div>
 
                         </div>
                     </div>
@@ -120,24 +152,16 @@
                                                                     @method('PUT')
                                                                     <div class="form-group row">
                                                                         <label for="type"
-                                                                            class="col-md-4 col-form-label text-md-right">{{ __('Url') }}</label>
+                                                                            class="col-md-4 col-form-label text-md-right">{{ __('Radio Name') }}</label>
                                                                         <div class="col-md-6">
                                                                             <select name="type" id="type" required
                                                                                 class="form-control">
-                                                                                <option @if ($stream->type == 'Radio Qur-aan') value="Radio Qur-aan"
-                                                                                @elseif ($stream->type=="Radio Mawaidha Mubaashara")
-                                                                                            value="Radio Qur-aan"
-
-                                                                                @else @endif
-                                                                                    value="Radio Qur-aan">
-                                                                                    {{ $stream->type }}
-                                                                                </option>
-                                                                                <option value="Radio Qur-aan">
-                                                                                    Radio Qur-aan</option>
-                                                                                <option value="Radio Mawaidha Mubaashara">
-                                                                                    Radio Mawaidha Mubaashara</option>
-                                                                                <option value="Radio Mawaidha Marudio">Radio
-                                                                                    Mawaidha Marudio</option>
+                                                                                @foreach ($radioNames as $radioName)
+                                                                                    <option
+                                                                                        value="{{ $radioName->name }}"
+                                                                                        {{ $stream->type == $radioName->name ? 'selected' : '' }}>
+                                                                                        {{ $radioName->name }}</option>
+                                                                                @endforeach
                                                                             </select>
                                                                             @error('type')
                                                                                 <span class="invalid-feedback" role="alert">
@@ -201,7 +225,7 @@
                                                 </a>
                                             </td>
                                             {{-- <td>
-                                                <form id="" method="POST" enctype="multipart/form-data" 
+                                                <form id="" method="POST" enctype="multipart/form-data"
                                                     action="{{ route('toggle_status', $stream) }}">
                                                     @csrf @method('PUT')
                                                     <div class="switch switch-primary d-inline m-r-10">
@@ -216,11 +240,8 @@
                                             </td> --}}
                                         </tr>
                                     @endforeach
-
-
                                 </tbody>
                             </table>
-
                         </div>
                     @endif
                 </div>
@@ -232,7 +253,7 @@
                 <div class="modal-dialog modal-md">
                     <div class="modal-content">
                         <div class="modal-header bg-primary text-white">
-                            <h5 class="modal-title">Add Stream</h5>
+                            <h5 class="modal-title">Create Radio</h5>
                             <button class="close" data-dismiss="modal">
                                 <span>&times;</span>
                             </button>
@@ -242,13 +263,13 @@
                                 @csrf
                                 <div class="form-group row">
                                     <label for="type"
-                                        class="col-md-4 col-form-label text-md-right">{{ __('Radio Type') }}</label>
+                                        class="col-md-4 col-form-label text-md-right">{{ __('Radio Name') }}</label>
                                     <div class="col-md-6">
                                         <select name="type" id="type" required class="form-control">
                                             <option value="">--Select--</option>
-                                            <option value="Radio Qur-aan">Radio Qur-aan</option>
-                                            <option value="Radio Mawaidha Mubaashara">Radio Mawaidha Mubaashara</option>
-                                            <option value="Radio Mawaidha Marudio">Radio Mawaidha Marudio</option>
+                                            @foreach ($radioNames as $radioName)
+                                                <option value="{{ $radioName->name }}">{{ $radioName->name }}</option>
+                                            @endforeach
                                         </select>
                                         @error('type')
                                             <span class="invalid-feedback" role="alert">
@@ -287,6 +308,60 @@
                                     </div>
                                 </div>
 
+                                <div class="form-group row mb-0">
+                                    <div class="col-md-6 offset-md-4">
+                                        <button type="submit" class="btn btn-primary">
+                                            Add
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- ADD RADIO TYPE MODAL -->
+            <div class="modal fade" id="addRadioNames">
+                <div class="modal-dialog modal-md">
+                    <div class="modal-content">
+                        <div class="modal-header bg-primary text-white">
+                            <h5 class="modal-title">Add Radio Name</h5>
+                            <button class="close" data-dismiss="modal">
+                                <span>&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form method="POST" action="{{ route('add_radio_name') }}" enctype="multipart/form-data">
+                                @csrf
+                                <div class="form-group row">
+                                    <label for="name"
+                                        class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
+                                    <div class="col-md-6">
+                                        <input id="name" type="text"
+                                            class="form-control @error('name') is-invalid @enderror" name="name"
+                                            value="{{ old('name') }}" required autocomplete="name">
+                                        @error('name')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="description"
+                                        class="col-md-4 col-form-label text-md-right">{{ __('Description') }}</label>
+                                    <div class="col-md-6">
+                                        <input id="description" type="text"
+                                            class="form-control @error('description') is-invalid @enderror"
+                                            name="description" value="{{ old('description') }}" required
+                                            autocomplete="description">
+                                        @error('description')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                </div>
                                 <div class="form-group row mb-0">
                                     <div class="col-md-6 offset-md-4">
                                         <button type="submit" class="btn btn-primary">

@@ -113,7 +113,7 @@
 
                                         <td>{{ $picture->date }}</td>
                                         <td>{{ $picture->title }}</td>
-                                        <td class=""><img class="zoom-image" src=" http://127.0.0.1:8000/api/picture/file/{{$picture->id}}"
+                                        <td class=""><img class="zoom-image" src="{{asset('storage/'.$picture->file)}}"
                                             alt="Image File" style="width: 30px; height:30px"></td>
                                         <td>
                                             <a href="#" class="btn btn-outline-primary" data-toggle="modal"
@@ -250,7 +250,7 @@
                                                         </div>
                                                         <div class="modal-body">
                                                             <div class="">
-                                                                <video src="http://127.0.0.1:8000/api/video/file/{{$video->id}}"
+                                                                <video src="{{asset('storage/'.$video->file)}}"
                                                                     controls style="width: 100%;height:100%"></video>
                                                             </div>
                                                         </div>

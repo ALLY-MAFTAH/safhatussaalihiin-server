@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\RadioName;
 use App\Models\Stream;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Request as REQ;
@@ -12,10 +13,11 @@ class StreamController extends Controller
     public function getLiveStream()
     {
         $streams = Stream::all();
+        $radioNames = RadioName::all();
 
         if (REQ::is('api/*'))
             return response()->json(['streams' => $streams]);
-        return view('live_stream')->with('streams', $streams);
+        return view('live_stream')->with(['streams'=>$streams,'radioNames' =>$radioNames]);
     }
 
     public function postLiveStream(Request $request)
@@ -24,7 +26,7 @@ class StreamController extends Controller
         $attributes = $this->validate($request, [
             'cover' => ['required', 'file'],
             'url' => 'required',
-            'type' => 'required',
+            'type' => 'required | unique:streams',
         ]);
 
         $cover = $attributes['cover'];
