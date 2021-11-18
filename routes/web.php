@@ -47,7 +47,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('add_stream', [StreamController::class,'postLiveStream'])->name('add_stream');
     Route::put('edit_stream/{streamId}', [StreamController::class,'putLiveStream'])->name('edit_stream');
     Route::get('delete_stream/{streamId}', [StreamController::class,'deleteLiveStream'])->name('delete_stream');
-    Route::put('toggle_status/{stream}/status', [StreamController::class, 'toggleStatus'])->name('toggle_status');
+    Route::put('toggle_status/{streamId}/status', [StreamController::class, 'toggleStatus'])->name('toggle_status');
 
     // RADIO NAMES ROUTES
     Route::get('radio_names', [RadioNameController::class,'getRadioName'])->name('radio_names');

@@ -31,7 +31,7 @@ class HomeController extends Controller
      */
     public function index(Request $request)
     {
-        $date=Carbon::now('GMT+3')->toDateString();
+        $date = Carbon::now('GMT+3')->toDateString();
         // dd($date);
 
         if ($request['date']) {
@@ -54,7 +54,12 @@ class HomeController extends Controller
             });
         }
         $streams = Stream::all();
-        return view('home')->with(['videos' => $filteredVideos, 'pictures' => $filteredPictures, 'date' => $date,'streams' => $streams,]);
+        foreach ($streams as $stream) {
+            if ($stream->status == 0) {
+                $stream->url = "";
+            }
+        }
+        return view('home')->with(['videos' => $filteredVideos, 'pictures' => $filteredPictures, 'date' => $date, 'streams' => $streams,]);
     }
 
     public function changePasswordRoute()

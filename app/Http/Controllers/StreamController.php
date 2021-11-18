@@ -12,12 +12,13 @@ class StreamController extends Controller
 {
     public function getLiveStream()
     {
-        $streams = Stream::all();
+        $streams = Stream::where('status',1)->get();
         $radioNames = RadioName::all();
+        $allStreams = Stream::all();
 
         if (REQ::is('api/*'))
             return response()->json(['streams' => $streams]);
-        return view('live_stream')->with(['streams'=>$streams,'radioNames' =>$radioNames]);
+        return view('live_stream')->with(['streams'=>$allStreams,'radioNames' =>$radioNames]);
     }
 
     public function postLiveStream(Request $request)
@@ -71,13 +72,21 @@ class StreamController extends Controller
         // return back()->with('message', 'Stream Added successfully');
     }
 
-    public function toggleStatus(Request $request, Stream $stream)
+    public function toggleStatus(Request $request, $streamId)
     {
+        $stream =Stream::findOrFail($streamId);
+
         $attributes = $this->validate($request, [
             'status' => ['required', 'boolean'],
         ]);
+        $stream->update([
+            'status' => $request->input('status'),
 
-        $stream->update($attributes);
+        ]);
+
+        $stream->save();
+    //    $dfff= $stream->update($attributes);
+    // dd($stream->status);
 
         return back();
     }

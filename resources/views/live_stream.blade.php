@@ -89,7 +89,7 @@
                                         <th></th>
                                         <th></th>
                                         <th></th>
-                                        {{-- <th>Switch</th> --}}
+                                        <th>Switch</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -224,9 +224,9 @@
                                                     <i class="fas fa-trash"> Delete</i>
                                                 </a>
                                             </td>
-                                            {{-- <td>
-                                                <form id="" method="POST" enctype="multipart/form-data"
-                                                    action="{{ route('toggle_status', $stream) }}">
+                                            <td>
+                                                <form id="status-{{$stream->id}}" method="POST"
+                                                    action="{{ route('toggle_status', $stream->id) }}">
                                                     @csrf @method('PUT')
                                                     <div class="switch switch-primary d-inline m-r-10">
                                                         <input type="hidden" name="status" value="0">
@@ -237,7 +237,7 @@
                                                         <label for="status-switch-{{ $stream->id }}" class="cr"></label>
                                                     </div>
                                                 </form>
-                                            </td> --}}
+                                            </td>
                                         </tr>
                                     @endforeach
                                 </tbody>

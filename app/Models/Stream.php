@@ -13,6 +13,7 @@ class Stream extends Model
     protected $fillable = [
         'type',
         'url',
+        'status',
         'cover',
     ];
 

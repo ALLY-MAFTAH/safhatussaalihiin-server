@@ -98,7 +98,8 @@
                                                                                 style="color: rgb(16, 22, 105);font-weight:bolder">{{ $picture->title }}</span>
                                                                         </h6>
                                                                     </div>
-                                                                    <div class="col-md-6" style="text-align-last: right">
+                                                                    <div class="col-md-6"
+                                                                        style="text-align-last: right">
                                                                         <a href="{{ asset('storage/' . $picture->file) }}"
                                                                             download class="btn btn-outline-primary">
                                                                             <i
@@ -135,7 +136,8 @@
                                                                                 style="color: rgb(16, 22, 105);font-weight:bolder">{{ $video->title }}</span>
                                                                         </h6>
                                                                     </div>
-                                                                    <div class="col-md-6" style="text-align-last: right">
+                                                                    <div class="col-md-6"
+                                                                        style="text-align-last: right">
                                                                         <a href="{{ asset('storage/' . $video->file) }}"
                                                                             download class="btn btn-outline-primary">
                                                                             <i
@@ -183,9 +185,11 @@
                                 <div class="row container">
                                     <table class="table">
                                         @if (count($streams) == 0)
-                                            <div class="row" style="font-size:18px; padding-top:50%;padding-bottom:50%; ">
+                                            <div class="row"
+                                                style="font-size:18px; padding-top:50%;padding-bottom:50%; ">
                                                 <div class="col-1"></div>
-                                                <div class="col-10"><i class="fas fa-exclamation-triangle"></i> No Radio
+                                                <div class="col-10"><i class="fas fa-exclamation-triangle"></i> No
+                                                    Radio
                                                     Links Yet</div>
                                                 <div class="col-1"></div>
                                             </div>
@@ -193,8 +197,14 @@
                                             <div style="padding: 15px">
                                                 <div class="text-left">
                                                     @foreach ($streams as $index => $stream)
-                                                        <div><b
-                                                                style="font-size: 16px">{{ $index + 1 . '. ' . $stream->type }}</b>
+                                                        <div><b style="font-size: 16px">
+                                                            @if ($stream->status==0)
+
+                                                            <span class="px-1"
+                                                            style="border-radius:5px;background:red;color: white;">
+                                                            OFF</span>
+                                                            @endif
+                                                                    {{ ' ' . $index + 1 . '. ' . $stream->type }}</b>
                                                         </div>
                                                         <div class="text-center"> <audio src="{{ $stream->url }}"
                                                                 controls style="width: 250px;"></audio>
