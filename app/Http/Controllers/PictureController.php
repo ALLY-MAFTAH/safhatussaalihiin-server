@@ -18,7 +18,7 @@ class PictureController extends Controller
         if ($request['date']) {
             $date = $request['date'] ??  null;
         }
-        $pictures = Picture::all();
+        $pictures = Picture::where('deleted_at',null)->latest()->get();
         if ($date == null) {
             $filteredPictures = $pictures;
         } else {
@@ -147,11 +147,10 @@ class PictureController extends Controller
 
     public function getTodayPosts()
     {
-        $pictures = Picture::all();
-        $videos = Video::all();
+        $posts = Picture::all();
 
         if (REQ::is('api/*'))
-            return response()->json(['pictures' => $pictures, 'videos' => $videos]);
-        return view('today')->with(['pictures' => $pictures, 'videos' => $videos]);
+            return response()->json(['posts' => $posts]);
+        return view('today')->with(['pictures' => $posts]);
     }
 }

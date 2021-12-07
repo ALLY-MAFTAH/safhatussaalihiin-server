@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Month;
+use App\Models\Picture;
+use App\Models\Post;
+use App\Models\Video;
 use App\Models\Year;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Request as REQ;
@@ -80,17 +83,16 @@ class MonthController extends Controller
     }
 
 
-    public function getAllMedia($monthId)
+    public function getAllPosts($monthId)
     {
         $month = Month::find($monthId);
         if (!$month) return back()->with('message', 'Month not found');
 
-        $pictures = $month->pictures;
-        $videos = $month->videos;
+        $posts = Post::where('month_id',$month->id)->latest()->get();
 
         $year = Year::find($month->year_id);
         if (!$year) return back()->with('message', 'Year not found');
         $thisYear = $year->name;
-        return view('month')->with(['month' => $month, 'thisYear' => $thisYear,   'pictures' => $pictures, 'videos' => $videos]);
+        return view('month')->with(['month' => $month, 'thisYear' => $thisYear,   'posts' => $posts]);
     }
 }

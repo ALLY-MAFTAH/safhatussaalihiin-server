@@ -156,9 +156,11 @@
                                     <label for="name"
                                         class="col-md-4 col-form-label text-md-right">{{ __('Year') }}</label>
                                     <div class="col-md-6">
-                                        <input id="name" type="number"
-                                            class="form-control @error('date') is-invalid @enderror" name="name"
-                                            value="{{ old('name') }}" required autocomplete="name" autofocus>
+                                        <select name="name" id="name" class="form-control">
+                                            @foreach(range( Date("Y"),Date("Y")-4) as $year)
+                                                <option value="{{ $year }}">{{ $year }}</option>
+                                            @endforeach
+                                        </select>
                                         @error('name')
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $message }}</strong>

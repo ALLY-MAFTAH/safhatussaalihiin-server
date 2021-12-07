@@ -136,7 +136,6 @@
                             <div></div>
                         @endif
                     @else
-
                         <ul class="navbar-nav ml-auto">
                             <li class="nav-item list-unstyled">
                                 <a class="nav-link " href="{{ route('home') }}">
@@ -144,22 +143,19 @@
                                     </h5>
                                 </a>
                             </li>
-
                             <li class="nav-item  list-unstyled">
                                 <a class="nav-link " href="{{ route('media') }}">
                                     <h5
                                         class="nav-items-2 {{ request()->routeIs('media') || request()->routeIs('year') || request()->routeIs('month') || request()->routeIs('pictures') || request()->routeIs('videos') ? 'active' : '' }}">
-                                        Pictures & Videos</h5>
+                                        Posts</h5>
                                 </a>
                             </li>
                             <li class="nav-item  list-unstyled">
                                 <a class="nav-link " href="{{ route('live_stream') }}">
                                     <h5 class="nav-items-2 {{ request()->routeIs('live_stream') ? 'active' : '' }}">
-                                        Live Radios</h5>
+                                        Radios</h5>
                                 </a>
                             </li>
-
-
                         </ul>
                     @endguest
 
@@ -186,11 +182,12 @@
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     <a style="color: red" class="dropdown-item" href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
-                                                                                     document.getElementById('logout-form').submit();">
+                                                                                         document.getElementById('logout-form').submit();">
                                         <i class="fas fa-power-off"></i>{{ __(' Logout') }}
                                     </a>
 
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                        class="d-none">
                                         @csrf
                                     </form>
 

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Picture;
+use App\Models\Post;
 use App\Models\Stream;
 use App\Models\Video;
 use App\Models\User;
@@ -32,17 +32,16 @@ class HomeController extends Controller
     public function index(Request $request)
     {
         $date = Carbon::now('GMT+3')->toDateString();
-        // dd($date);
 
         if ($request['date']) {
             $date = $request['date'] ??  null;
         }
-        $pictures = Picture::all();
+        $posts = Post::all();
         if ($date == null) {
-            $filteredPictures = $pictures;
+            $filteredPosts = $posts;
         } else {
-            $filteredPictures = $pictures->filter(function ($picture) use ($date) {
-                return $picture->date == $date;
+            $filteredPosts = $posts->filter(function ($post) use ($date) {
+                return $post->date == $date;
             });
         }
         $videos = Video::all();
@@ -59,7 +58,7 @@ class HomeController extends Controller
                 $stream->url = "";
             }
         }
-        return view('home')->with(['videos' => $filteredVideos, 'pictures' => $filteredPictures, 'date' => $date, 'streams' => $streams,]);
+        return view('home')->with(['videos' => $filteredVideos, 'posts' => $filteredPosts, 'date' => $date, 'streams' => $streams,]);
     }
 
     public function changePasswordRoute()

@@ -17,7 +17,7 @@ class VideoController extends Controller
         if ($request['date']) {
             $date = $request['date'] ??  null;
         }
-        $videos = Video::all();
+        $videos = Video::where('deleted_at',null)->latest()->get();
         if ($date == null) {
             $filteredVideos = $videos;
         } else {

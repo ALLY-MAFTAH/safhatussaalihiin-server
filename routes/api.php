@@ -2,8 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\PictureController;
-use App\Http\Controllers\VideoController;
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\StreamController;
 use App\Http\Controllers\HomeController;
 /*
@@ -21,16 +20,18 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 // TODAY ROUTES
-Route::get('today', [PictureController::class, 'getTodayPosts']);
+Route::get('today', [PostController::class, 'getTodayPosts']);
 
 // LIVE STREAM ROUTES
 Route::get('streams', [StreamController::class, 'getLiveStream']);
 Route::get('stream/cover/{streamId}', [StreamController::class, 'viewCoverFile']);
 
-// VIDEOS ROUTES
-Route::get('videos', [VideoController::class, 'getAllVideos']);
-Route::get('video/file/{videoId}', [VideoController::class, 'viewVideoFile']);
 
-// PICTURES ROUTES
-Route::get('pictures', [PictureController::class, 'getAllPictures']);
-Route::get('picture/file/{pictureId}', [PictureController::class, 'viewPictureFile']);
+// POSTS ROUTES
+Route::get('posts', [PostController::class, 'getAllPosts']);
+Route::get('post/picture_file_1/{postId}', [PostController::class, 'viewPictureFile1']);
+Route::get('post/picture_file_2/{postId}', [PostController::class, 'viewPictureFile2']);
+Route::get('post/picture_file_3/{postId}', [PostController::class, 'viewPictureFile3']);
+Route::get('post/video_file_1/{postId}', [PostController::class, 'viewVideoFile1']);
+Route::get('post/video_file_2/{postId}', [PostController::class, 'viewVideoFile2']);
+

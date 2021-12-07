@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\PictureController;
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\VideoController;
 use App\Http\Controllers\StreamController;
@@ -57,10 +57,10 @@ Route::group(['middleware' => 'auth'], function () {
 
 
     // PICTURES  ROUTES
-    Route::get('pictures', [PictureController::class,'getAllPictures'])->name('pictures');
-    Route::post('add_picture/{monthId}', [PictureController::class,'postPicture'])->name('add_picture');
-    Route::put('edit_picture/{pictureId}', [PictureController::class,'putPicture'])->name('edit_picture');
-    Route::get('delete_picture/{pictureId}', [PictureController::class,'deletePicture'])->name('delete_picture');
+    Route::get('posts', [PostController::class,'getAllPosts'])->name('posts');
+    Route::post('add_post/{monthId}', [PostController::class,'postPost'])->name('add_post');
+    Route::put('edit_post/{postId}', [PostController::class,'putPost'])->name('edit_post');
+    Route::get('delete_post/{postId}', [PostController::class,'deletePost'])->name('delete_post');
 
 
     // VIDEOS  ROUTES
@@ -81,7 +81,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::put('edit_year/{yearId}', [YearController::class,'putYear'])->name('edit_year');
     Route::get('delete_year/{yearId}', [YearController::class,'deleteYear'])->name('delete_year');
 
-    // // MEDIA ROUTES
-    Route::get('month/{monthId}', [MonthController::class,'getAllMedia'])->name('month');
+    // POSTS ROUTES
+    Route::get('month/{monthId}', [MonthController::class,'getAllPosts'])->name('month');
 
 });

@@ -31,4 +31,8 @@ class Month extends Model
     {
         return $this->hasMany(Video::class);
     }
+    public function posts()
+    {
+        return $this->hasMany(Post::class);
+    }
 }

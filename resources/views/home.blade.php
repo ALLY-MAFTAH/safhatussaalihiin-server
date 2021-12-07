@@ -85,33 +85,81 @@
                                                 <b>PICTURES</b>
                                             </div>
                                             <tbody>
-                                                <div class="row ext-div px-3">
-                                                    @foreach ($pictures as $index => $picture)
+                                                @foreach ($posts as $index => $post)
+                                                    <div class="row ext-div px-3">
 
-                                                        <div class="col-6 " style="padding: 2px;">
-                                                            <div class="int-div">
-                                                                <img src=" {{ asset('storage/' . $picture->file) }}"
-                                                                    alt="Picture" style="width: 100%;padding:5px">
-                                                                <div class="row" style="padding: 5px">
-                                                                    <div class="col-md-6">
-                                                                        <h6> <span
-                                                                                style="color: rgb(16, 22, 105);font-weight:bolder">{{ $picture->title }}</span>
-                                                                        </h6>
-                                                                    </div>
-                                                                    <div class="col-md-6"
-                                                                        style="text-align-last: right">
-                                                                        <a href="{{ asset('storage/' . $picture->file) }}"
-                                                                            download class="btn btn-outline-primary">
-                                                                            <i
-                                                                                class="fas fa-download">{{ __(' Download') }}</i>
-                                                                        </a>
+                                                        @if ($post->picture_file_1 != '')
+                                                            <div class="col-6 " style="padding: 2px;">
+                                                                <div class="int-div">
+                                                                    <img src=" {{ asset('storage/' . $post->picture_file_1) }}"
+                                                                        alt="Picture" style="width: 100%;padding:5px">
+                                                                    <div class="row" style="padding: 5px">
+                                                                        <div class="col-md-6">
+                                                                            <h6> <span
+                                                                                    style="color: rgb(16, 22, 105);font-weight:bolder">{{ $post->title }}</span>
+                                                                            </h6>
+                                                                        </div>
+                                                                        <div class="col-md-6"
+                                                                            style="text-align-last: right">
+                                                                            <a href="{{ asset('storage/' . $post->file) }}"
+                                                                                download class="btn btn-outline-primary">
+                                                                                <i
+                                                                                    class="fas fa-download">{{ __(' Download') }}</i>
+                                                                            </a>
+                                                                        </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                        </div>
+                                                        @endif
+                                                        @if ($post->picture_file_2 != '')
+                                                            <div class="col-6 " style="padding: 2px;">
+                                                                <div class="int-div">
+                                                                    <img src=" {{ asset('storage/' . $post->picture_file_2) }}"
+                                                                        alt="Picture" style="width: 100%;padding:5px">
+                                                                    <div class="row" style="padding: 5px">
+                                                                        <div class="col-md-6">
+                                                                            <h6> <span
+                                                                                    style="color: rgb(16, 22, 105);font-weight:bolder">{{ $post->title }}</span>
+                                                                            </h6>
+                                                                        </div>
+                                                                        <div class="col-md-6"
+                                                                            style="text-align-last: right">
+                                                                            <a href="{{ asset('storage/' . $post->picture_file_2) }}"
+                                                                                download class="btn btn-outline-primary">
+                                                                                <i
+                                                                                    class="fas fa-download">{{ __(' Download') }}</i>
+                                                                            </a>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        @endif
+                                                        @if ($post->picture_file_3 != '')
+                                                            <div class="col-6 " style="padding: 2px;">
+                                                                <div class="int-div">
+                                                                    <img src=" {{ asset('storage/' . $post->picture_file_3) }}"
+                                                                        alt="Picture" style="width: 100%;padding:5px">
+                                                                    <div class="row" style="padding: 5px">
+                                                                        <div class="col-md-6">
+                                                                            <h6> <span
+                                                                                    style="color: rgb(16, 22, 105);font-weight:bolder">{{ $post->title }}</span>
+                                                                            </h6>
+                                                                        </div>
+                                                                        <div class="col-md-6"
+                                                                            style="text-align-last: right">
+                                                                            <a href="{{ asset('storage/' . $post->picture_file_3) }}"
+                                                                                download class="btn btn-outline-primary">
+                                                                                <i
+                                                                                    class="fas fa-download">{{ __(' Download') }}</i>
+                                                                            </a>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        @endif
 
-                                                    @endforeach
-                                                </div>
+                                                    </div>
+                                                @endforeach
                                             </tbody>
                                         </table>
                                     </div>
@@ -123,22 +171,22 @@
                                             <tbody>
                                                 <div class="row ext-div px-2">
 
-                                                    @foreach ($videos as $index => $video)
-
+                                                    @foreach ($posts as $index => $post)
+                                                    @if ($post->video_file_1 != '')
                                                         <div class="col-12 " style="padding: 2px;">
                                                             <div class="int-div">
 
-                                                                <video src="{{ asset('storage/' . $video->file) }}"
+                                                                <video src="{{ asset('storage/' . $post->video_file_1) }}"
                                                                     controls style="width: 100%;padding:5px"></video>
                                                                 <div class="row" style="padding: 5px">
                                                                     <div class="col-md-6">
                                                                         <h6> <span
-                                                                                style="color: rgb(16, 22, 105);font-weight:bolder">{{ $video->title }}</span>
+                                                                                style="color: rgb(16, 22, 105);font-weight:bolder">{{ $post->title }}</span>
                                                                         </h6>
                                                                     </div>
                                                                     <div class="col-md-6"
                                                                         style="text-align-last: right">
-                                                                        <a href="{{ asset('storage/' . $video->file) }}"
+                                                                        <a href="{{ asset('storage/' . $post->video_file_1) }}"
                                                                             download class="btn btn-outline-primary">
                                                                             <i
                                                                                 class="fas fa-download">{{ __(' Download') }}</i>
@@ -147,6 +195,31 @@
                                                                 </div>
                                                             </div>
                                                         </div>
+                                                        @endif
+                                                    @if ($post->video_file_2 != '')
+                                                        <div class="col-12 " style="padding: 2px;">
+                                                            <div class="int-div">
+
+                                                                <video src="{{ asset('storage/' . $post->video_file_2) }}"
+                                                                    controls style="width: 100%;padding:5px"></video>
+                                                                <div class="row" style="padding: 5px">
+                                                                    <div class="col-md-6">
+                                                                        <h6> <span
+                                                                                style="color: rgb(16, 22, 105);font-weight:bolder">{{ $post->title }}</span>
+                                                                        </h6>
+                                                                    </div>
+                                                                    <div class="col-md-6"
+                                                                        style="text-align-last: right">
+                                                                        <a href="{{ asset('storage/' . $post->video_file_2) }}"
+                                                                            download class="btn btn-outline-primary">
+                                                                            <i
+                                                                                class="fas fa-download">{{ __(' Download') }}</i>
+                                                                        </a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        @endif
                                                     @endforeach
                                                 </div>
                                             </tbody>
@@ -198,13 +271,14 @@
                                                 <div class="text-left">
                                                     @foreach ($streams as $index => $stream)
                                                         <div><b style="font-size: 16px">
-                                                            @if ($stream->status==0)
+                                                                @if ($stream->status == 0)
 
-                                                            <span class="px-1"
-                                                            style="border-radius:5px;background:red;color: white;">
-                                                            OFF</span>
-                                                            @endif
-                                                                    {{ ' ' . $index + 1 . '. ' . $stream->type }}</b>
+                                                                    <span class="px-1"
+                                                                        style="border-radius:5px;background:red;color: white;">
+                                                                        OFF</span>
+                                                                @endif
+                                                                {{ ' ' . $index + 1 . '. ' . $stream->type }}
+                                                            </b>
                                                         </div>
                                                         <div class="text-center"> <audio src="{{ $stream->url }}"
                                                                 controls style="width: 250px;"></audio>
