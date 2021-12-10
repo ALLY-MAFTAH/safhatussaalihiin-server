@@ -77,7 +77,7 @@ class PostController extends Controller
 
         if ($request->hasFile('picture_file_3')) {
             $this->file_path_3 = $request->file('picture_file_3')->store('posts');
-        } else return back()->with('message', 'Add a picture_file_3');
+        } else $this->file_path_3 = null;
 
         if ($request->hasFile('video_file_1')) {
             $this->file_path_4 = $request->file('video_file_1')->store('posts');
@@ -85,7 +85,7 @@ class PostController extends Controller
 
         if ($request->hasFile('video_file_2')) {
             $this->file_path_5 = $request->file('video_file_2')->store('posts');
-        } else return back()->with('message', 'Add a video_file_1');
+        } else $this->file_path_5 = null;
 
 
         $post = new Post();
