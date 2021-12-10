@@ -120,8 +120,7 @@ return [
     |
     */
 
-    // 'key' => 'APP_KEY',
-    'key' => '32charshere',
+    'key' => env('APP_KEY'),
 
 
 
