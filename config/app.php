@@ -120,7 +120,10 @@ return [
     |
     */
 
-    'key' => 'APP_KEY',
+    // 'key' => 'APP_KEY',
+    'key' => '32charshere',
+
+
 
     'cipher' => 'AES-256-CBC',
 
